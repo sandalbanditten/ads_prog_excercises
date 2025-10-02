@@ -13,7 +13,8 @@ public class Submit {
         
         // Uncomment the following line, and add the needed task id, username and password
         // to submit the code to the server
-		submit("<id>", "ads25-dj7089", "JAJkpV5wHDj1iMo4");
+    		// submit("inversions-2", "ads25-dj7089", "JAJkpV5wHDj1iMo4");
+        Inversions.testAll();
     }
 
     private static void debug(String m) { /*System.out.println(m);*/ }
