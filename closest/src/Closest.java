@@ -1,19 +1,24 @@
 // Version: 20200917
 // Handin done by:
-//   <id 1> <name 1>
-//   <id 2> <name 2>
-//   <id 3> <name 3>
+//   202505728 Tobias Clasen
+//   202509301 Rasmus Poulsen
 // Contributions:
-//   <name 1> <contribution>
-//   <name 2> <contribution>
-//   <name 3> <contribution>
+//   Rasmus wrote the code, but we talked about the solution together.
 
 import java.io.*;
 import java.util.*;
 public class Closest {
     public int computeClosest(ArrayList<Integer> input) {
-        // Implement your code here to return the shortest distance between two numbers!
-        return Math.abs(input.get(1) - input.get(0));
+        Collections.sort(input);
+        int i1 = Integer.MAX_VALUE;
+        int closest = Integer.MAX_VALUE;
+        for (int i : input){
+            if (Math.abs(i-i1)<closest){
+                closest = Math.abs(i-i1);
+            }
+            i1 = i;
+        }
+        return closest;
     }
 
     public static void testAll() {
