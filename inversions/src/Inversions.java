@@ -1,20 +1,25 @@
 // Version: 20200917
 // Handin done by:
-//   <id 1> <name 1>
-//   <id 2> <name 2>
-//   <id 3> <name 3>
+//   202505728 Tobias Clasen
+//   202509301 Rasmus Poulsen
 // Contributions:
-//   <name 1> <contribution>
-//   <name 2> <contribution>
-//   <name 3> <contribution>
+//   Rasmus wrote the code, but we talked about the solution together.
+//   (and we talked about how shitty our implementation is, lol)
 
 import java.io.*;
 import java.util.*;
 
 public class Inversions {
     public int countInversions(ArrayList<Integer> input) {
-        // Implement your code here to return the number of inversions in input!
-        return 42;
+        int inversions = 0;
+        for (int i = 0; i<input.size();i++){
+            for (int j = 0; j<input.size();j++){
+                if (input.get(i)>input.get(j) && i<j){
+                    inversions++;
+                }
+            }
+        }
+        return inversions;
     }
 
     public static void testAll() {

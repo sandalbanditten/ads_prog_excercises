@@ -1,19 +1,47 @@
 // Version: 20200917
 // Handin done by:
-//   <id 1> <name 1>
-//   <id 2> <name 2>
-//   <id 3> <name 3>
+//   202508292 Ida Tragstrup
+//   202505728 Tobias Clasen
+//   202509301 Rasmus Poulsen
 // Contributions:
-//   <name 1> <contribution>
-//   <name 2> <contribution>
-//   <name 3> <contribution>
+//   Rasmus Poulsen - Has written the code
 
-import java.io.*;
 import java.util.*;
 public class Dyck {
     public boolean checkParentheses(ArrayList<Character> input) {
-        // Implement your code here to check if the parentheses are properly matched!
-        return true;
+        ArrayList<Boolean> prevWasSqr = new ArrayList<>();
+
+        boolean wrongPrev = false;
+
+        for (Character c : input) {
+            switch (c) {
+                case '[' -> { 
+                    prevWasSqr.add(true);
+                    continue;
+                } 
+                case '(' -> {
+                    prevWasSqr.add(false);
+                    continue;
+                }
+            }
+
+            if (prevWasSqr.size() <= 0){
+                return false;
+            }
+
+            switch (c) {
+                case ']' -> { wrongPrev = !prevWasSqr.getLast(); }
+                case ')' -> { wrongPrev = prevWasSqr.getLast(); }
+            }
+
+            prevWasSqr.removeLast();
+            
+            if (wrongPrev){
+                return false;
+            }    
+        }
+        
+        return prevWasSqr.isEmpty();
     }
 
     public static void testAll() {
