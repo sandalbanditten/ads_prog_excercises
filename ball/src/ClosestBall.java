@@ -3,15 +3,30 @@
 //   202505728 Tobias Clasen
 //   202509301 Rasmus Poulsen
 // Contributions:
-// 
+//   Discussed together, implemented by Tobias
 
 import java.io.*;
 import java.util.*;
 
 public class ClosestBall {
     public int computeClosest(ArrayList<Integer> players, ArrayList<Integer> balls) {
+        int min = Integer.MAX_VALUE;
+
+        players.sort(Comparator.comparingInt(e -> e));
+        balls.sort(Comparator.comparingInt(e -> e));
+
+        for (int i : players) {
+            for (int j : balls) {
+                int v = Math.abs(i - j);
+                if (v < min) {
+                    min = v;
+                    // Short circuit idk
+                    if (min == 0) return min;
+                }
+            }
+        }
         // Implement your code here to return the shortest distance between two numbers!
-        return Math.abs(players.get(0) - balls.get(0));
+        return min;
     }
 
     public static void testAll() {
